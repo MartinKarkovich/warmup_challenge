@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+# Authentication
+gem 'devise_token_auth'
+
 ruby '2.7.0'
 gem 'rails', '~> 6.1.4'
 gem 'mysql2', '~> 0.5'
