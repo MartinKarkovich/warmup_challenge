@@ -9,6 +9,6 @@ class Post < ApplicationRecord
     scope :for_category, -> {where(category: category)}
 
     # Validations
-    validates :title,:content,:image,:category_id,:date_of_creation, presence: true
+    validates :title,:content,:image,:category_id,:date_of_creation,:user_id, presence: true
 
-end
+end 

@@ -12,10 +12,15 @@ module Api
             end
 
             def update
-                if Post.update(parameters)
-                    render json: @post
+                if @current_user.id == @post.user_id
+                    if Post.update(parameters)
+                        render json: @post
+                    else
+                        render json: @post.errors, status: :unprocessable_entity
+                    end
                 else
-                    render json: @post.errors, status: :unprocessable_entity
+                    render 
+                end
             end
 
             def destroy
@@ -24,6 +29,7 @@ module Api
 
             def create
                 @post = Post.new(parameters)
+                @post.user_id = @current_user.id
                 if @post.save
                     render json: @post, status: :created
                 else
