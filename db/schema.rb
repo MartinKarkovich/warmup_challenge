@@ -23,10 +23,12 @@ ActiveRecord::Schema.define(version: 2021_07_20_035707) do
     t.text "content"
     t.string "image"
     t.bigint "category_id"
+    t.bigint "user_id"
     t.datetime "date_of_creation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_posts_on_category_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

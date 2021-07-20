@@ -5,6 +5,7 @@ class CreatePost < ActiveRecord::Migration[6.1]
       t.text :content
       t.string :image
       t.belongs_to :category
+      t.belongs_to :user
       t.datetime :date_of_creation
 
       t.timestamps
