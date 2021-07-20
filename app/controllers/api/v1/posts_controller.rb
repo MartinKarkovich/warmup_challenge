@@ -19,12 +19,16 @@ module Api
                         render json: @post.errors, status: :unprocessable_entity
                     end
                 else
-                    render 
+                    render json: {"error": "not your post dude"}
                 end
             end
 
             def destroy
-                @post.destroy
+                if @current_user.id == @post.user_id
+                    @post.destroy
+                else
+                    render json: {"error": "not your post dude"}
+                end
             end
 
             def create
@@ -34,14 +38,16 @@ module Api
                     render json: @post, status: :created
                 else
                     render json: @post.errors, status: :unprocessable_entity
-            end   
+                end 
+            end  
             
             private
 
             def set_posts
                 posts = Post.for_desc
-                posts = Post.for_title(title) if title
-                posts = Post.for_category(category_id) if category_id             
+                posts = posts.for_title(title) if title
+                posts = posts.for_category(category_id) if category_id
+                posts            
             end
 
             # Filters
@@ -49,13 +55,13 @@ module Api
                 params[:title]
             end
             
-            def category
-                params[:category]
+            def category_id
+                params[:category_id]
             end
+            ########################
+            
 
-            ############
-
-            def set_character
+            def set_post
             @post = Post.find(params[:id])
             end
 

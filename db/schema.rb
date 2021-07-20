@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2021_07_20_035707) do
     t.string "image"
     t.bigint "category_id"
     t.bigint "user_id"
-    t.datetime "date_of_creation"
+    t.date "date_of_creation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_posts_on_category_id"
