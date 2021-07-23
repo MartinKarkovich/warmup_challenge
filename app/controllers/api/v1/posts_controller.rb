@@ -38,31 +38,31 @@ module Api
       end
 
 
-          def set_posts
-            posts = Post.all.order(created_at: :desc)
-            posts = posts.for_title(title) if title
-            posts = posts.for_category(category_id) if category_id
-            posts
-          end
+      def set_posts
+        posts = Post.all.order(created_at: :desc)
+        posts = posts.for_title(title) if title
+        posts = posts.for_category(category_id) if category_id
+        posts
+      end
 
-          # Filters
-          def title
-            params[:title]
-          end
+      # Filters
+      def title
+        params[:title]
+      end
 
-          def category_id
-            params[:category_id]
-          end
-          ########################
+      def category_id
+        params[:category_id]
+      end
+      ########################
 
 
-          def set_post
-            @post = current_user.posts.find(params[:id])
-          end
+      def set_post
+        @post = current_user.posts.find(params[:id])
+      end
 
-          def parameters
-            params.require(:post).permit(:title, :content, :image, :category_id)
-          end
+      def parameters
+        params.require(:post).permit(:title, :content, :image, :category_id)
+      end
     end
   end
 end
