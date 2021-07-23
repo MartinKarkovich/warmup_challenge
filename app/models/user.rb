@@ -10,4 +10,7 @@ class User < ActiveRecord::Base
 
   # Associations
   has_many :posts
+
+  # Validations
+  validates :email,:password, presence: true
 end

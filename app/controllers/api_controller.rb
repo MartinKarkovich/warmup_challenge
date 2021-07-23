@@ -1,8 +1,5 @@
-class ApiController < ApplicationController
-    before_action :authenticate_user!,:set_current_user
+# frozen_string_literal: true
 
-    private
-    def set_current_user
-        @current_user = current_user
-    end
+class ApiController < ApplicationController
+  before_action :authenticate_user!
 end

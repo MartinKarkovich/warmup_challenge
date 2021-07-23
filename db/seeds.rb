@@ -19,8 +19,7 @@ end
         title: "title#{i}#{j}",
         content: "content#{i}#{j}",
         image: "image#{i}#{j}",
-        category_id:rand(1..CATEGORIES.length),
-        date_of_creation: Date.today-rand(10000),
+        category_id:rand(1..CATEGORIES.length),        
         user_id: i+1,     
     )    
     end

@@ -6,8 +6,6 @@ class CreatePost < ActiveRecord::Migration[6.1]
       t.string :image
       t.belongs_to :category
       t.belongs_to :user
-      t.date :date_of_creation
-
       t.timestamps
     end
   end

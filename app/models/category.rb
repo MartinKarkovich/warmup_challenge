@@ -1,7 +1,9 @@
-class Category < ApplicationRecord
-    # Associations
-    has_many :posts
+# frozen_string_literal: true
 
-    # Validations
-    validates :name, presence: true
+class Category < ApplicationRecord
+  # Associations
+  has_many :posts
+
+  # Validations
+  validates :name, presence: true
 end

@@ -1,10 +1,11 @@
-module Api
-    module V1
-        class ShowPostSerializer < ApplicationSerializer
-            attributes :id,:date_of_creation,:image,:title
+# frozen_string_literal: true
 
-            has_one :category, serializer: CategorySerializer
-        
-        end        
+module Api
+  module V1
+    class ShowPostSerializer < ApplicationSerializer
+      attributes :id, :created_at, :image, :title
+
+      has_one :category, serializer: CategorySerializer
     end
+  end
 end
