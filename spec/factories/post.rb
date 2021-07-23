@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :post do
-    title { "Title" }
+    sequence(:title, "a") { |n| "Title#{n}" }
     content { "Content" }
     image { "Image" }
     user
