@@ -12,5 +12,5 @@ class User < ActiveRecord::Base
   has_many :posts
 
   # Validations
-  validates :email,:password, presence: true
+  validates :email, presence: true
 end

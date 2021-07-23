@@ -3,8 +3,7 @@
 module Api
   module V1
     class PostsController < ApiController
-      before_action :set_post, only: [:show, :update, :destroy]
-      before_action :is_post_from_current_user?, only: [:update, :destroy]
+      before_action :set_post, only: [:update, :destroy]
 
       def index
         @posts = set_posts
@@ -12,6 +11,7 @@ module Api
       end
 
       def show
+        @post ||= Post.find(params[:id])
         render json: @post, serializer: StandardPostSerializer
       end
 
@@ -37,12 +37,6 @@ module Api
         end
       end
 
-        private
-          def is_post_from_current_user?
-            if current_user.id != @post.user_id
-              render json: { "error": "not your stuff dude" }
-            end
-          end
 
           def set_posts
             posts = Post.all.order(created_at: :desc)
@@ -63,7 +57,7 @@ module Api
 
 
           def set_post
-            @post = Post.find(params[:id])
+            @post = current_user.posts.find(params[:id])
           end
 
           def parameters
