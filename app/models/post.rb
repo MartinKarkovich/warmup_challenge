@@ -12,4 +12,5 @@ class Post < ApplicationRecord
 
   # Validations
   validates :title, :content, :image, :category_id, :user_id, presence: true
+  validates :image, format: {with: /\.(jpg|png)\Z/i , message: "%{value} is not a valid image. It must end in \'.png\' or \'.jpg\'"}
 end
